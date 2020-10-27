@@ -30,7 +30,7 @@ else:
 if world_level == 0:
     exp_flower = 7*green_exp_book+2*blue_exp_book
 elif world_level == 1:
-    exp_flower == 8*green_exp_book+5*blue_exp_book
+    exp_flower = 8*green_exp_book+5*blue_exp_book
 elif world_level == 2:
     exp_flower = 10*blue_exp_book
 elif world_level == 3:
@@ -95,8 +95,15 @@ else:
 
 # 收集现有的经验量
 purple_exp_book_owned = int(input('请输入你现在拥有的紫书: '))
-blue_exp_book_owned = int(input('请输入你现在有多少本蓝书'))
+blue_exp_book_owned = int(input('请输入你现在有多少本蓝书: '))
 exp_owned_by_book = purple_exp_book*purple_exp_book_owned+blue_exp_book*blue_exp_book_owned
 # 刷的经验花数量
-amount_of_exp_flower = (exp_needed - exp_owned_by_book) / exp_flower
-print(amount_of_exp_flower)
+amount_of_exp_flower_origin = (exp_needed - exp_owned_by_book) / exp_flower
+# 四舍五入
+amount_of_exp_flower = '%.f' % amount_of_exp_flower_origin
+
+if int(amount_of_exp_flower) <= 0:
+    print('已经足够了, 不用再刷了!')
+else:
+    print('你最多需要刷 '+str(amount_of_exp_flower)+'朵经验花,相当于需要'+str(int(amount_of_exp_flower)*20)+'点体力')
+
