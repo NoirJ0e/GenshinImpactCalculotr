@@ -1,76 +1,106 @@
-import sys
-# 1金币 = 5经验
-# purple_exp_book = 20000 经验 = 4本blue_exp_book , blue_exp_book = 5000 经验
-# 1金材料 = 3紫材料 = 9蓝材料 = 12绿材料, 3低级材料 = 1高级材料
-
-# 材料部分
-green_instance = 1
-blue_instance = 3*green_instance
-purple_instance = 3*blue_instance
-
-green_elite = 1
-blue_elite = 3*green_elite
-purple_elite = 3*blue_elite
-#经验部分
-blue_exp_book = 5000
-purple_exp_book = 4*blue_exp_book
-print(purple_exp_book)
-# 用于判断人物升级经验的部分
-character_level= int(input("请输入你的人物现在的等级: "))
-character_level_origin = int(input("请输入你的人物想升级到多少级: "))
-
-if character_level == 0:
-    exp_origin = 0
-elif character_level == 20:
-    exp_origin = 9*purple_exp_book
-elif character_level == 40:
-    exp_origin = (6+29)*purple_exp_book
-elif character_level == 50:
-    exp_origin = (6+29+29)*purple_exp_book
-elif character_level == 50:
-    exp_origin = (6+29+29)*purple_exp_book
-elif character_level == 60:
-    exp_origin = (6+29+29+43)*purple_exp_book
-elif character_level == 70:
-    exp_origin = (6+29+29+43+60)*purple_exp_book
-elif character_level == 80:
-    exp_origin = (6+29+29+43+60+81)*purple_exp_book
-elif character_level == 90:
-    exp_origin = (6+29+29+43+60+81+171)*purple_exp_book
-
-
-if character_level_origin == 0:
-    exp_needed = 0
-elif character_level_origin == 20:
-    exp_needed = 9*purple_exp_book-int(exp_origin)
-elif character_level_origin == 40:
-    exp_needed = (6+29)*purple_exp_book-int(exp_origin)
-elif character_level_origin == 50:
-    exp_needed = (6+29+29)*purple_exp_book-int(exp_origin)
-elif character_level_origin == 50:
-    exp_needed = (6+29+29)*purple_exp_book-int(exp_origin)
-elif character_level_origin == 60:
-    exp_needed = (6+29+29+43)*purple_exp_book-int(exp_origin)
-elif character_level_origin == 70:
-    exp_needed = (6+29+29+43+60)*purple_exp_book-int(exp_origin)
-elif character_level_origin == 80:
-    exp_needed = (6+29+29+43+60+81)*purple_exp_book-int(exp_origin)
-elif character_level_origin == 90:
-    exp_needed = (6+29+29+43+60+81+171)*purple_exp_book-int(exp_origin)
+#import sys
+GEB = 1000
+BEB = 5*GEB
+PEB = 4*BEB
+charLevelOrigin = int(input('Please enter the character currently (Only support 1,20,40,50,60,70.80) : '))
+x = charLevelOrigin
+print('\nEXP owned has been calculated\n')
+if x == 1:
+    exp_owned = 0
+elif x == 20:
+    exp_owned = 120175
+elif x == 40:
+    exp_owned = 698500
+elif x == 50:
+    exp_owned = 1277600
+elif x == 60:
+    exp_owned = 2131725
+elif x == 70:
+    exp_owned = 3327650
+elif x == 80:
+    exp_owned = 4939525
+elif x == 90:
+    exp_owned = 8362650
 else:
-    print("输入有误!必须为 20,40,50,70或80!请重新运行此程序")
-    sys.exit(1)
+    print("Wrong input")
 
-if int(exp_origin) > int(exp_needed):
-    print('已经够了,不用继续刷了')
+charLevelWant = int(input('Please enter the character level you want to reach (Only support 1,20,40,50,60,70.80) : '))
+y = charLevelWant
+print('\nEXP need has been calculated\n')
+if y == 1:
+    exp_need = 0
+elif y == 20:
+    exp_need = 120175
+elif y == 40:
+    exp_need = 698500
+elif y == 50:
+    exp_need = 1277600
+elif y == 60:
+    exp_need = 2131725
+elif y == 70:
+    exp_need = 3327650
+elif y == 80:
+    exp_need = 4939525
+elif y == 90:
+    exp_need = 8362650
 else:
-    purple_exp_book_owned = input("你现在有多少本紫书: ")
-    blue_exp_book_owned = input("你现在有多少本蓝书: ")
-    final_exp_needed = int(exp_needed)-int(purple_exp_book_owned)*purple_exp_book-int(blue_exp_book_owned)*blue_exp_book
-    book_needed = final_exp_needed / int(blue_exp_book)
-    amount_of_exp_flower = final_exp_needed/(2*purple_exp_book+6*blue_exp_book)
-    rein_needed_for_exp = amount_of_exp_flower*20
-    money_needed_for_exp = final_exp_needed/5
-    print("\n 你需要 "+str(book_needed)+" 本蓝书,需要刷至少 "+ str(amount_of_exp_flower)+"次地脉之花\n 也就是至少需要"+str(rein_needed_for_exp)+" 点体力和"+str(money_needed_for_exp)+"金币\n")
+    print("Wrong input")
 
- 
+actEXP = exp_need - exp_owned
+print('ACTUALLY EXP NEEDED HAS BEEN CALCULATED\n\n')
+
+z = int(input('Please enter your current AR: '))
+if z <= 14:
+    worldLevel = 0
+elif 15 <= z <= 20:
+    worldLevel = 1
+elif 20 <= z <= 25:
+    worldLevel = 2
+elif 25 <= z <= 30:
+    worldLevel = 3
+elif 30 <= z <= 35:
+    worldLevel = 4
+elif 35 <= z <= 40:
+    worldLevel = 5
+elif 40 <= z <= 45:
+    worldLevel = 6
+elif 45 <= z <= 50:
+    worldLevel = 7
+elif 50 <= z <= 55:
+    worldLevel = 8
+elif 50 <= z <= 60:
+    worldLevel = 8
+else:
+    print("Wrong input")
+print("\nCurrent World Level is:",worldLevel)
+
+if worldLevel == 0:
+    monaFlower = 12000
+    expFlower = 22000
+elif worldLevel == 1:
+    monaFlower = 20000
+    expFlower - 35000
+elif worldLevel == 2:
+    monaFlower = 28000
+    expFlower = 50000
+elif worldLevel == 3:
+    monaFlower = 36000
+    expFlower = 65000
+elif worldLevel == 4:
+    monaFlower = 44000
+    expFlower = 70000
+elif worldLevel == 5:
+    monaFlower = 52000
+    expFlower = 90000
+elif worldLevel == 6:
+    monaFlower = 60000
+    expFlower = 110000
+# 2020.12.13 ,currently it's the same
+elif worldLevel == 7:
+    monaFlower = 60000
+    expFlower = 110000
+elif worldLevel == 8:
+    monaFlower = 60000
+    expFlower = 110000
+
+exp_flower_need = actEXP / expFlower
